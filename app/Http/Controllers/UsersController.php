@@ -73,5 +73,11 @@ class UsersController extends Controller
         return redirect()->route('users.show', $user);
     }
 
+    public function index(User $user)
+    {
+        $users = $user::paginate(6);
+        return view('users.index',compact('users'));
+    }
+
 
 }
