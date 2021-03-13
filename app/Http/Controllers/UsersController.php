@@ -24,7 +24,7 @@ class UsersController extends Controller
             'email' => 'required|unique:users|max:255',
             'password' => 'required|confirmed|min:6',
         ]);
-        
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -34,6 +34,8 @@ class UsersController extends Controller
         session()->flash('success', '欢迎，您将在这里开启一段新的旅程~');
         return redirect()->route('users.show', [$user]);
     }
+
+
 
 
 }
