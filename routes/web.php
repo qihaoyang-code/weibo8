@@ -27,6 +27,15 @@ Route::get('signup','UsersController@create')->name('signup');
 
 
 Route::resource('users','UsersController');
+//| 		 GET|HEAD  | users             | users.index   | App\Http\Controllers\UsersController@index
+//|        | POST      | users             | users.store   | App\Http\Controllers\UsersController@store
+//|        | GET|HEAD  | users/create      | users.create  | App\Http\Controllers\UsersController@create
+//|        | GET|HEAD  | users/{user}      | users.show    | App\Http\Controllers\UsersController@show
+//|        | PUT|PATCH | users/{user}      | users.update  | App\Http\Controllers\UsersController@update
+//|        | DELETE    | users/{user}      | users.destroy | App\Http\Controllers\UsersController@destroy
+//|        | GET|HEAD  | users/{user}/edit | users.edit    | App\Http\Controllers\UsersController@edit
+
+
 
 Route::get('login','SessionsController@create')->name('login');
 Route::post('login','SessionsController@store')->name('login');
