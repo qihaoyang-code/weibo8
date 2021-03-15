@@ -43,6 +43,10 @@ Route::delete('logout','SessionsController@destroy')->name('logout');
 
 
 Route::get('signup/confirm/{token}','UsersController@confirmEmail')->name('confirm_email');
+//关注的人
+Route::get('users/{user}/followings','UsersController@followings')->name('users.followings');
+//粉丝
+Route::get('users/{user}/followers','UsersController@followers')->name('users.followers');
 
 
 //密码
@@ -55,3 +59,5 @@ Route::post('password/reset',  'PasswordController@reset')->name('password.updat
 
 //微博
 Route::resource('statuses','StatusesController',['only'=>['store','destroy']]);
+
+
