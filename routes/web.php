@@ -49,6 +49,9 @@ Route::get('users/{user}/followings','UsersController@followings')->name('users.
 Route::get('users/{user}/followers','UsersController@followers')->name('users.followers');
 
 
+Route::post('users/followers/{user}','FollowersController@store')->name('followers.store');
+Route::delete('users/followers/{user}','FollowersController@destroy')->name('followers.destroy');
+
 //密码
 Route::get('password/reset',  'PasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email',  'PasswordController@sendResetLinkEmail')->name('password.email');
