@@ -34,6 +34,13 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
+//        $demo  = User::find(1);
+//        $demo->followings()->sync([2],false);
+//        $user->followings()->detach([2,3]);
+//        $res = $demo->followings()->allRelatedIds()->toArray();
+//        var_dump($res);
+//        die();
+
         $statuses = $user->statuses()
             ->orderBy('created_at', 'desc')
             ->paginate(30);
@@ -70,7 +77,6 @@ class UsersController extends Controller
             $message->to($to)->subject($subject);
         });
     }
-
 
     public function edit(User $user)
     {
@@ -123,5 +129,8 @@ class UsersController extends Controller
         session()->flash('success', '恭喜你，激活成功！');
         return redirect()->route('users.show', [$user]);
     }
+
+
+
 
 }
