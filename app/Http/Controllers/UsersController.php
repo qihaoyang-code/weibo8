@@ -19,6 +19,11 @@ class UsersController extends Controller
         $this->middleware('guest', [
             'only' => ['create']
         ]);
+
+        // 限流 一个小时内只能提交 10 次请求；
+        $this->middleware('throttle:10,60', [
+            'only' => ['store']
+        ]);
     }
 
     public function create()
@@ -54,13 +59,11 @@ class UsersController extends Controller
     {
         $view = 'emails.confirm';
         $data = compact('user');
-        $from = 'summer@explode.com';
         $to = $user->email;
         $subject = "感谢注册 Weibo 应用！请确认你的邮箱。";
-        $name = 'summer';
 
-        Mail::send($view,$data,function($message) use ($from,$name,$to,$subject){
-           $message->from($from,$name)->to($to)->subject($subject);
+        Mail::send($view, $data, function ($message) use ($to, $subject) {
+            $message->to($to)->subject($subject);
         });
     }
 
